@@ -3,6 +3,7 @@
   border-radius: 5px;
   max-width: 400px;
   height: 250px;
+  margin: 15px 25px;
   animation: fadeIn 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
 }
  

@@ -1,40 +1,192 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>なんか動きのあるWebページ</title>
-  
-  <style>
-    /* 箱のスタイル設定 */
-    .anim-box.fadein.is-animated {
-      /* 背景色（グラデーション） */
-      background: linear-gradient(to right, #362ae0 0%,#3b79cc 50%,#42d3ed 100%);
-      
-      /* 角を少し丸くする */
-      border-radius: 5px;
-      
-      /* サイズの設定 */
-      max-width: 400px;
-      height: 250px;
-      margin: 15px 25px;
-      
-      /* アニメーションの設定：名前(fadeIn) 時間(0.7秒) 動き方(加速など) 終了後の状態(維持) */
-      animation: fadeIn 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-    }
-    
-    /* アニメーションの動きを定義（透明から不透明へ） */
-    @keyframes fadeIn {
-      0% {
-        opacity: 0; /* 最初は透明 */
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ハンドルネームのポートフォリオ</title>
+    <style>
+      /* --- 全体の基本デザイン --- */
+      body {
+        font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto; /* 中央寄せ */
+        padding: 20px;
+        
+        /* ページ全体のアニメーション適用 */
+        animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        opacity: 0; /* 最初は隠しておく */
       }
-      100% {
-        opacity: 1; /* 最後はくっきり表示 */
+
+      /* --- 各要素のデザインと動き --- */
+      
+      /* タイトル */
+      h1 {
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 40px;
+        color: #2c3e50;
+        
+        /* タイトルだけ少し遅れて表示 */
+        animation: slideIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+        opacity: 0;
+        transform: translateX(-20px);
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="anim-box fadein anim is-animated"></div>
-</body>
+
+      /* セクション見出し */
+      h2, h3 {
+        border-bottom: 2px solid #eaeaea;
+        padding-bottom: 10px;
+        margin-top: 40px;
+        color: #2c3e50;
+      }
+
+      /* テーブル（表） */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+      th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+      th {
+        background-color: #f8f9fa;
+        width: 30%;
+      }
+
+      /* 表の行にマウスを乗せた時の動き */
+      tr {
+        transition: background-color 0.3s ease;
+      }
+      tr:hover {
+        background-color: #eef7ff; /* 薄い青色に変化 */
+      }
+
+      /* リンクのデザインと動き */
+      a {
+        color: #3498db;
+        text-decoration: none;
+        display: inline-block;
+        transition: transform 0.2s ease, color 0.2s ease;
+      }
+      a:hover {
+        color: #e74c3c;
+        transform: translateY(-2px); /* 少し浮き上がる */
+      }
+
+      /* リスト */
+      ul {
+        padding-left: 20px;
+      }
+      li {
+        margin-bottom: 8px;
+      }
+
+      /* --- アニメーションの定義 --- */
+      
+      /* 下からふわっと浮き上がる */
+      @keyframes fadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 左からスライドしてくる */
+      @keyframes slideIn {
+        0% {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ハンドルネーム</h1>
+
+    <h2>About</h2>
+    <p>
+      簡単な自己紹介やアピール。<br>
+      どんなことができる、したいのか。
+    </p>
+
+    <h3>Profile</h3>
+    <ul>
+      <li>名前（ハンドルネームも可）</li>
+      <li>所在地（県や市までで OK）</li>
+      <li>得意領域（Web 開発、サーバ運用など）</li>
+    </ul>
+
+    <h3>Skills</h3>
+    <table>
+      <tr>
+        <th>OS</th>
+        <td>Windows, Ubuntu など</td>
+      </tr>
+      <tr>
+        <th>Engine, Frameworks</th>
+        <td>Node.js, Express など</td>
+      </tr>
+      <tr>
+        <th>Tool, MiddleWare</th>
+        <td>Git, PostgreSQL など</td>
+      </tr>
+      <tr>
+        <th>資格・免許</th>
+        <td>情報処理技術者、LPIC など</td>
+      </tr>
+    </table>
+
+    <h3>Works</h3>
+    <p>アピールできる活動内容を書きましょう。</p>
+    <ul>
+      <li><a href="https://github.com/">GitHub</a></li>
+      <li><a href="https://qiita.com/">Qiita</a></li>
+      <li><a href="https://zenn.dev/">Zenn</a></li>
+      <li>
+        作った作品
+        <ul>
+          <li><a href="https://example.com/">作品 1</a></li>
+          <li><a href="https://example.com/">作品 2</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Contact</h3>
+    <p>連絡先や SNS のアカウントを書きましょう。</p>
+    <ul>
+      <li><a href="mailto:name@example.com">Mail</a></li>
+      <li><a href="https://twitter.com/n_yobikou">X(旧 Twitter)</a></li>
+      <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
+    </ul>
+
+    <h3>History</h3>
+    <p>学歴、職歴、アルバイト、インターン経験など。</p>
+    <table>
+      <tr>
+        <th>2019 年</th>
+        <td><a href="https://dwango.co.jp/">株式会社ドワンゴ</a> 入社</td>
+      </tr>
+      <tr>
+        <th>2018 年</th>
+        <td>学校法人角川ドワンゴ学園 <a href="https://nnn.ed.jp/">N高等学校</a> 卒業</td>
+      </tr>
+      <tr>
+        <th>20XX 年</th>
+        <td>表彰、受賞歴、メディア掲載記事などあれば</td>
+      </tr>
+    </table>
+  </body>
 </html>
